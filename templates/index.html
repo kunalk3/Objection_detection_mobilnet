@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 	<!-- Always force latest IE rendering engine or request Chrome Frame -->
+        <title>KK - Object Detection</title>		
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link rel="icon" href="static/img/aaa.jpg"> <!-- To avoid error in flask while running the server -->
+		<!-- CSS -->
+		<!-- Fontawesome Icon font -->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="static/css/font-awesome.min.css">
+		<!-- bootstrap.min -->
+        <link rel="stylesheet" href="static/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="static/css/owl.carousel.css">
+        <link rel="stylesheet" href="static/css/slit-slider.css">
+        <link rel="stylesheet" href="static/css/animate.css">
+        <link rel="stylesheet" href="static/css/main.css">
+		<!-- Modernizer Script for old Browsers -->
+        <script src="static/js/modernizr-2.6.2.min.js"></script>
+
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
+  		<script type=text/javascript> $(function() { $("#mybutton").click(function (event) { $.getJSON('/flush', { }, function(data) { }); return false; }); }); </script>
+    </head>
+	
+    <body id="body">
+		<!-- preloader -->
+		<div id="preloader">
+            <div class="loder-box">
+            	<div class="battery"></div>
+            </div>
+		</div>
+		<!-- end preloader -->
+
+        <!-- Fixed Navigation -->
+        <header id="navigation" class="navbar-inverse navbar-fixed-top animated-header">
+            <div class="container">
+                <div class="navbar-header">
+					<!-- logo -->
+					<h1 class="navbar-brand">
+						<a href="#body">Home Page</a>
+					</h1>
+					<!-- /logo -->
+                </div>
+
+				<!-- main nav -->
+                <nav class="collapse navbar-collapse navbar-right" role="navigation">
+                    <ul id="nav" class="nav navbar-nav">
+                        <li><a href="#body">Home</a></li>
+                        <li><a href="#service">Feature</a></li>
+                        <li><a href="#social">Connect</a></li>
+                        <input type="button"id="mybutton"value="Clr"/>
+                    </ul>
+                </nav>
+				<!-- /main nav -->
+            </div>
+        </header>
+        <!-- End Fixed Navigation -->
+		
+		<main class="site-content" role="main">
+		<!-- Home Slider -->
+		<section id="home-slider">
+            <div id="slider" class="sl-slider-wrapper">
+				<div class="sl-slider">				
+					<div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+						<div class="bg-img bg-img-2"></div>
+						<div class="slide-caption">
+							<div class="caption-content ">
+                                <br><br>
+                                <span><b>Object Detection - </b>Upload image here...</span>
+                              	<div class="container">
+                                	<form method=post enctype=multipart/form-data >
+                                    	<center><input type=file name=file onchange="loadFile(event)" ONCLICK="ShowAndHide()"></center><br>
+                                    	<input type=submit value=Upload class="btn btn-blue btn-effect">
+                                 	</form><br>
+                                 	<img  id="output"  alt="" width="50%" height="50%">
+                              	</div>
+	                            {% if data %}
+								<div class="container" ID="SectionName">
+									<img src="{{ data.uploaded_img }}" id="my_image17" alt="" width="480px" height="350px">
+									<img src="{{ data.processed_img }}" id="my_image18" alt="" width="480px" height="350px">
+
+								</div>
+								{% endif %}
+                            </div>
+                        </div>						
+					</div>
+					
+					<div class="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
+						<div class="bg-img bg-img-1"></div>
+						<div class="slide-caption">
+                            <div class="caption-content">
+                                <br><br>
+                                <span><b>Object Detection - </b>Upload image here...</span>
+									  <div class="container">
+										<form method=post enctype=multipart/form-data >
+											<center><input type=file name=file onchange="loadFile(event)" ONCLICK="ShowAndHide()"></center><br>
+											<input type=submit value=Upload class="btn btn-blue btn-effect">
+										 </form><br>
+										 <img id="output" alt="" width="50%" height="50%" />
+									  </div>
+									  {% if data %}
+									  <div class="container" ID="SectionName">
+										<img src="{{ data.uploaded_img }}" alt="" width="480px" height="350px">
+										<img src="{{ data.processed_img }}" alt="" width="480px" height="350px"> 
+										
+									</div>
+									{% endif %}
+							</div>
+                        </div>	
+					</div>
+					
+					<div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">						
+						<div class="bg-img bg-img-3"></div>
+						<div class="slide-caption">
+                            <div class="caption-content ">
+                                <br><br>
+                                <span><b>Object Detection - </b>Upload image here...</span>
+                              	<div class="container">
+                                	<form method=post enctype=multipart/form-data >
+                                    	<center><input type=file name=file onchange="loadFile(event)" ONCLICK="ShowAndHide()"></center><br>
+                                    	<input type=submit value=Upload class="btn btn-blue btn-effect">
+                                 	</form><br>
+                                 	<img id="output" alt="" width="50%" height="50%" />
+                              	</div>
+	                              {% if data %}
+                              	<div class="container" ID="SectionName"></div>
+									<img src="{{ data.uploaded_img }}" alt="" width="480px" height="350px">
+									<img src="{{ data.processed_img }}" alt="" width="480px" height="350px"> 
+									
+								</div>
+								{% endif %}
+                            </div>
+                        </div>
+					</div>
+				</div><!-- /sl-slider -->
+
+                <!-- 
+                <nav id="nav-arrows" class="nav-arrows">
+                    <span class="nav-arrow-prev">Previous</span>
+                    <span class="nav-arrow-next">Next</span>
+                </nav>
+                -->
+                <nav id="nav-arrows" class="nav-arrows hidden-xs hidden-sm visible-md visible-lg">
+                    <a href="javascript:;" class="sl-prev">
+                        <i class="fa fa-angle-left fa-3x"></i>
+                    </a>
+                    <a href="javascript:;" class="sl-next">
+                        <i class="fa fa-angle-right fa-3x"></i>
+                    </a>
+                </nav>
+				<nav id="nav-dots" class="nav-dots visible-xs visible-sm hidden-md hidden-lg">
+					<span class="nav-dot-current"></span>
+					<span></span>
+					<span></span>
+				</nav>
+
+			</div><!-- /slider-wrapper -->
+		</section>
+
+        <!--  End Home SliderEnd -->	
+			<!-- about section -->
+			<section id="about" >
+				<div class="container">
+					<div class="row">
+						<h3>&nbsp;&nbsp;&nbsp;Hi There, Welcome...</h3>
+						<div class="col-md-4 wow animated fadeInLeft">
+							<div class="recent-works">
+								<div id="works">
+									<div class="work-item">
+										<p>A project demonstrate the computer vision and deep learning concepts with <b>object detection</b> using Caffe . Caffe is an open-source deep learning framework developed for ML and DL. It is written in C++ and Caffe’s interface is coded in Python. Object Detection using SSD Mobilenet and Tensorflow Object Detection API : Can detect any single class from coco dataset.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-7 col-md-offset-1 wow animated fadeInRight">
+							<div class="welcome-block">							
+						     	 <div class="message-body">
+									<img src="/static/img/aaa.jpg" class="pull-left" alt="member">
+						       		<p>Hi, this is Kunal K from Pune, India. My tech staks are python, C++, machine learning, deep learning, html, css with prior experience with 3+ years in IT and analytics. I like to learn new technologies, development and contribute to the society. Let's share the ideas, challenges and connect with me on linkedin...</p>
+						     	 </div>
+						       	<a href="https://www.linkedin.com/in/kunalkolhe3/" class="btn btn-border btn-effect pull-right">Let's Connect...</a>
+						    </div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- end about section -->
+			
+			<!-- Service section -->
+			<section id="service">
+				<div class="container">
+					<div class="row">
+						<div class="sec-title text-center">
+							<h2 class="wow animated bounceInLeft">Features</h2>
+							<p class="wow animated bounceInRight">The Key Features of Project</p>
+						</div>
+						<div class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn"></div>
+						<div class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn">
+							<div class="service-item">
+								<div class="service-icon">
+									<i class="fa fa-home fa-3x"></i>
+								</div>
+								<h3>MultiBox Detector</h3>
+								<p>SSD300 takes only one single shot to detect multiple objects within the image</p>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn" data-wow-delay="0.3s">
+							<div class="service-item">
+								<div class="service-icon">
+									<i class="fa fa-tasks fa-3x"></i>
+								</div>
+								<h3>Faster Performanace</h3>
+								<p>SSD300 achieves 74.3% mAP at 59 FPS, faster than YOLOv1 (63.4% mAP at 45 FPS). </p>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn"></div>
+					</div>
+				</div>
+			</section>
+			<!-- end Service section -->
+						
+			<!-- Social section -->
+			<section id="social" class="parallax">
+				<div class="overlay">
+					<div class="container">
+						<div class="row">
+							<div class="sec-title text-center white wow animated fadeInDown">
+								<br><h2>Let's Connect</h2>
+								<p>I enjoy the journey with data, meeting new people, and hearing new perspectives. Let’s connect and feel free to ping me...</p>
+							</div>
+							
+							<ul class="social-button">
+								<li class="wow animated zoomIn"><a href="https://linkedin.com/in/kunalkolhe3"><i class="fa fa-linkedin fa-2x"></i></a></li>&nbsp;&nbsp;&nbsp;
+								<li class="wow animated zoomIn" data-wow-delay="0.5s"><a href="https://github.com/kunalk3"><i class="fa fa-github fa-2x"></i></a></li>&nbsp;&nbsp;&nbsp;
+								<li class="wow animated zoomIn" data-wow-delay="0.8s"><a href="mailto:kunalkolhe333@gmail.com"><i class="fa fa-envelope fa-2x"></i></a></li>&nbsp;&nbsp;&nbsp;
+								<li class="wow animated zoomIn" data-wow-delay="1.1s"><a href="https://www.facebook.com/kunal.kolhe.98"><i class="fa fa-facebook fa-2x"></i></a></li>&nbsp;&nbsp;&nbsp;
+								<li class="wow animated zoomIn" data-wow-delay="1.4s"><a href="https://instagram.com/kkunalkkolhe"><i class="fa fa-instagram fa-2x"></i></a></li>&nbsp;&nbsp;&nbsp;
+							</ul>							
+						</div>
+					</div>
+					<!--<div class="footer-social">
+						<ul>
+							<li class="wow animated zoomIn" data-wow-delay="0.10s"><a href="https://www.facebook.com/kunal.kolhe.98"><i class="fa fa-facebook fa-3x"></i></a></li>&nbsp;
+							<li class="wow animated zoomIn" data-wow-delay="0.12s"><a href="https://instagram.com/kkunalkkolhe"><i class="fa fa-instagram fa-3x"></i></a></li>
+						</ul>
+					</div>-->
+					<div class="footer-content">
+						<br><p>Copyright &copy; 2021 : Objection Detection MobileNet SSD by <a href="mailto:kunalkolhe333@gmail.com"> Kunal K.</a> </p>
+					</div><br>
+				</div>
+			</section>
+			<!-- end Social section -->		
+		</main>
+    </body>		
+		
+		<!-- Essential jQuery Plugins  -->
+		<!-- Main jQuery -->
+        <script src="static/js/jquery-1.11.1.min.js"></script>
+		<!-- Twitter Bootstrap -->
+        <script src="static/js/bootstrap.min.js"></script>
+		<!-- Single Page Nav -->
+        <script src="static/js/jquery.singlePageNav.min.js"></script>
+		<!-- jquery.fancybox.pack -->
+        <script src="static/js/jquery.fancybox.pack.js"></script>
+		<!-- Google Map API -->
+		<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+		<!-- Owl Carousel -->
+        <script src="static/js/owl.carousel.min.js"></script>
+        <!-- jquery easing -->
+        <script src="static/js/jquery.easing.min.js"></script>
+        <!-- Fullscreen slider -->
+        <script src="static/js/jquery.slitslider.js"></script>
+        <script src="static/js/jquery.ba-cond.min.js"></script>
+		<!-- onscroll animation -->
+        <script src="static/js/wow.min.js"></script>
+		<!-- Custom Functions -->
+        <script src="static/js/main.js"></script>
+		<!-- display image (uploaded) -->
+		<script src="static/js/index.js"></script>
+		<SCRIPT>
+			function ShowAndHide() {
+				var x = document.getElementById('SectionName');
+				x.style.display = 'none';
+			}
+		</SCRIPT>
+
+</html>
