@@ -33,4 +33,4 @@ def detect_object(path, filename):
             cv2.putText(image, label, (startX, y),
                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, COLORS[idx], 2)
 
-    return image # cv2.imwrite(f"{DOWNLOAD_FOLDER}{filename}",image)
+    return image
