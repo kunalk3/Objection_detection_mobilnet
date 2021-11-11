@@ -8,7 +8,6 @@ $(function(){
 	  , $container = $("#iii");
 	$img.on("click", function() {
 	  $img.remove();
-	  $container.html("<embed  src='http://www.leconcombre.com/stock/coccyminimini1.swf' width='550'  height='400'/>");
 	  $container.removeClass().removeAttr("id");
 	});
   });
