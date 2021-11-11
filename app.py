@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, redirect, url_for, render_template, send_from_directory,flash 
+from flask import Flask, request, render_template
 from werkzeug.utils import secure_filename
 import cv2
 import numpy as np
@@ -44,7 +44,19 @@ def index():
     return render_template('index.html')
 
 @app.route('/flush')
-def flush():   
+def flush():    
+    upload_dir = os.listdir(UPLOAD_FOLDER)
+    download_dir = os.listdir(DOWNLOAD_FOLDER)
+    upload_d = UPLOAD_FOLDER
+    download_d = DOWNLOAD_FOLDER
+    prefix_up = [upload_d + sub for sub in upload_dir]
+    prefix_down = [download_d + sub for sub in download_dir]
+    print(prefix_up, prefix_down)
+    
+    for f in prefix_up:
+        os.remove(f)
+    for f in prefix_down:
+        os.remove(f)
     return ""
 
 def process_file(path, filename):
